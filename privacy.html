@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy - Ignacy Tech</title>
+
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 { color: #58a6ff; }
+    a { color: #58a6ff; }
+    button {
+      margin-bottom: 20px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<button onclick="toggleLang()" id="langBtn">PL</button>
+
+<h1 id="title">Polityka prywatności</h1>
+
+<p id="content">
+Strona Ignacy Tech nie zbiera danych osobowych, nie używa plików cookies
+ani narzędzi analitycznych.
+
+Jedynym mechanizmem technicznym jest localStorage, który służy wyłącznie
+do zapamiętania informacji o wyświetleniu komunikatu Privacy Notice.
+
+Żadne dane nie są przekazywane do podmiotów trzecich.
+</p>
+
+<p>
+<a href="index.html">← Wróć na stronę główną</a>
+</p>
+
+<script>
+  let lang = "pl";
+
+  function toggleLang() {
+    lang = lang === "pl" ? "en" : "pl";
+    updateLang();
+  }
+
+  function updateLang() {
+    if (lang === "pl") {
+      document.documentElement.lang = "pl";
+      document.title = "Polityka prywatności - Ignacy Tech";
+      langBtn.innerText = "PL";
+      title.innerText = "Polityka prywatności";
+      content.innerText =
+        "Strona Ignacy Tech nie zbiera danych osobowych, nie używa plików cookies ani narzędzi analitycznych. Jedynym mechanizmem technicznym jest localStorage, który służy wyłącznie do zapamiętania informacji o wyświetleniu komunikatu Privacy Notice. Żadne dane nie są przekazywane do podmiotów trzecich.";
+    } else {
+      document.documentElement.lang = "en";
+      document.title = "Privacy Policy - Ignacy Tech";
+      langBtn.innerText = "EN";
+      title.innerText = "Privacy Policy";
+      content.innerText =
+        "Ignacy Tech does not collect personal data, does not use cookies or analytics tools. The only technical mechanism used is localStorage, which stores information about displaying the Privacy Notice. No data is shared with third parties.";
+    }
+  }
+
+  updateLang();
+</script>
+
+</body>
+</html>
