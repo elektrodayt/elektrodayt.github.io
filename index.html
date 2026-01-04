@@ -59,13 +59,13 @@
       justify-content: center;
       padding: 15px 25px;
       margin: 10px;
-      color: white;
       text-decoration: none;
       font-weight: bold;
       border-radius: 10px;
       border: none;
       cursor: pointer;
       transition: transform 0.2s ease, opacity 0.3s ease;
+      white-space: nowrap;
     }
 
     a.button:hover, button.control-btn:hover {
@@ -74,15 +74,17 @@
     }
 
     /* Platform colors */
-    .youtube { background-color: #ff0000; }
-    .discord { background-color: #5865f2; }
+    .youtube { background-color: #ff0000; color: #fff; }
+    .discord { background-color: #5865f2; color: #fff; }
     .instagram {
       background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      color: #fff;
     }
 
     /* Control buttons */
     button.control-btn {
       background-color: #444;
+      color: #fff;
     }
 
     body.light button.control-btn {
@@ -93,21 +95,12 @@
     /* GitHub button */
     .github {
       background-color: #ffffff;
-      padding: 15px;
+      color: #000000;
     }
 
     body.light .github {
       background-color: #000000;
-    }
-
-    .github svg {
-      width: 26px;
-      height: 26px;
-      fill: #000000;
-    }
-
-    body.light .github svg {
-      fill: #ffffff;
+      color: #ffffff;
     }
 
     footer {
@@ -131,11 +124,85 @@
 
   <!-- GitHub button -->
   <div class="bottom-left">
-    <a class="button github"
+    <a id="ghBtn" class="button github"
        href="https://github.com/ignacytech/ignacytech.github.io"
-       target="_blank"
-       aria-label="GitHub Repository">
+       target="_blank">
+      Repozytorium GitHub
+    </a>
+  </div>
 
-      <!-- GitHub SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.21 1.79 1.21 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 5.8 0c2.2-1.5 3.17-1.19 3.17-1.19.64 1.59.24 2.76.12 3.05.74.81 1.18 1.85 1.1
+  <img src="channels4_profile.jpg" alt="Logo Ignacy Tech" class="logo">
+
+  <h1>Ignacy Tech</h1>
+  <p id="description">Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!</p>
+
+  <a id="ytBtn" class="button youtube"
+     href="https://www.youtube.com/channel/UCBPIpGz2inVNYAAFuCQIDPQ"
+     target="_blank">
+    📺 Subskrybuj na YouTube
+  </a>
+
+  <a id="dcBtn" class="button discord"
+     href="https://discord.gg/CMeZxnKD3a"
+     target="_blank">
+    💬 Dołącz na Discord
+  </a>
+
+  <a id="igBtn" class="button instagram"
+     href="https://www.instagram.com/ignacy_tech/"
+     target="_blank">
+    📸 Obserwuj na Instagramie
+  </a>
+
+  <footer>
+    © 2026 Ignacy Tech
+  </footer>
+
+  <script>
+    let currentLang = "pl";
+    let darkMode = true;
+
+    function toggleLanguage() {
+      if (currentLang === "pl") {
+        document.documentElement.lang = "en";
+        document.title = "Ignacy Tech - Technology Channel";
+        document.getElementById("description").innerText =
+          "Welcome to the official website of the Ignacy Tech YouTube channel!";
+        document.getElementById("ytBtn").innerText =
+          "📺 Subscribe on YouTube";
+        document.getElementById("dcBtn").innerText =
+          "💬 Join Discord";
+        document.getElementById("igBtn").innerText =
+          "📸 Follow on Instagram";
+        document.getElementById("ghBtn").innerText =
+          "GitHub Repository";
+        document.querySelector(".top-right button").innerText = "🌍 EN";
+        currentLang = "en";
+      } else {
+        document.documentElement.lang = "pl";
+        document.title = "Ignacy Tech - Kanał Technologiczny";
+        document.getElementById("description").innerText =
+          "Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!";
+        document.getElementById("ytBtn").innerText =
+          "📺 Subskrybuj na YouTube";
+        document.getElementById("dcBtn").innerText =
+          "💬 Dołącz na Discord";
+        document.getElementById("igBtn").innerText =
+          "📸 Obserwuj na Instagramie";
+        document.getElementById("ghBtn").innerText =
+          "Repozytorium GitHub";
+        document.querySelector(".top-right button").innerText = "🌍 PL";
+        currentLang = "pl";
+      }
+    }
+
+    function toggleTheme() {
+      darkMode = !darkMode;
+      document.body.classList.toggle("light");
+      document.querySelector(".top-left button").innerText =
+        darkMode ? "🌙 Dark" : "☀️ Light";
+    }
+  </script>
+
+</body>
+</html>
