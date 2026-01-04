@@ -25,7 +25,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Corners */
+    /* Corner controls */
     .top-left, .top-right, .bottom-left {
       position: fixed;
       z-index: 10;
@@ -54,7 +54,9 @@
 
     /* Base buttons */
     a.button, button.control-btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 15px 25px;
       margin: 10px;
       color: white;
@@ -64,6 +66,7 @@
       border: none;
       cursor: pointer;
       transition: transform 0.2s ease, opacity 0.3s ease;
+      white-space: nowrap;
     }
 
     a.button:hover, button.control-btn:hover {
@@ -92,8 +95,8 @@
     .github {
       background-color: #ffffff;
       color: #000000;
-      padding: 7px 12px;      /* połowa paddingu */
-      font-size: 0.8em;       /* mniejsza czcionka */
+      padding: 7px 12px;
+      font-size: 0.8em;
       border-radius: 8px;
     }
 
