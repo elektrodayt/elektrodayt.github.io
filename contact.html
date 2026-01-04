@@ -3,22 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact – Ignacy Tech</title>
+  <title>Kontakt – Ignacy Tech</title>
 
   <style>
+    :root {
+      --bg: #000000;
+      --text: #c9d1d9;
+      --card: #0d1117;
+      --btn-bg: white;
+      --btn-text: black;
+      --accent: #58a6ff;
+    }
+
+    body.light {
+      --bg: #ffffff;
+      --text: #111111;
+      --card: #f3f3f3;
+      --btn-bg: black;
+      --btn-text: white;
+    }
+
     body {
-      background-color: #0d1117;
-      color: #c9d1d9;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .contact-box {
-      background: #161b22;
+    .top-right {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+
+    .lang-btn {
+      padding: 10px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+    }
+
+    .card {
+      background: var(--card);
       padding: 30px;
       border-radius: 16px;
       text-align: center;
@@ -28,7 +62,7 @@
     }
 
     h1 {
-      color: #58a6ff;
+      color: var(--accent);
       margin-bottom: 10px;
     }
 
@@ -37,8 +71,8 @@
       font-size: 1.1em;
     }
 
-    .email-box {
-      background: #0d1117;
+    .email {
+      background: var(--bg);
       padding: 12px;
       border-radius: 10px;
       font-family: monospace;
@@ -46,18 +80,18 @@
       word-break: break-all;
     }
 
-    button {
+    button.copy {
       padding: 12px 20px;
       border-radius: 10px;
       border: none;
       font-weight: bold;
       cursor: pointer;
-      background: white;
-      color: black;
+      background: var(--btn-bg);
+      color: var(--btn-text);
       transition: transform 0.2s ease, opacity 0.3s ease;
     }
 
-    button:hover {
+    button.copy:hover {
       transform: scale(1.05);
       opacity: 0.9;
     }
@@ -71,26 +105,59 @@
     }
   </style>
 </head>
-<body>
+<body class="dark">
 
-  <div class="contact-box">
-    <h1>Contact</h1>
-    <p>Business & collaboration</p>
+  <!-- Language switch -->
+  <div class="top-right">
+    <button class="lang-btn" onclick="toggleLang()">PL</button>
+  </div>
 
-    <div class="email-box" id="email">
+  <div class="card">
+    <h1 id="title">Kontakt</h1>
+    <p id="subtitle">Współpraca i kontakt biznesowy</p>
+
+    <div class="email" id="email">
       kanal.jozwinski@gmail.com
     </div>
 
-    <button onclick="copyEmail()">📋 Copy email</button>
+    <button class="copy" id="copyBtn" onclick="copyEmail()">
+      📋 Kopiuj e-mail
+    </button>
 
-    <a href="index.html" class="back">← Back to homepage</a>
+    <a href="index.html" class="back" id="backLink">
+      ← Powrót do strony głównej
+    </a>
   </div>
 
   <script>
+    let lang = "pl";
+
+    function toggleLang() {
+      lang = lang === "pl" ? "en" : "pl";
+      document.documentElement.lang = lang;
+      document.querySelector(".lang-btn").innerText = lang.toUpperCase();
+
+      if (lang === "pl") {
+        document.title = "Kontakt – Ignacy Tech";
+        document.getElementById("title").innerText = "Kontakt";
+        document.getElementById("subtitle").innerText = "Współpraca i kontakt biznesowy";
+        document.getElementById("copyBtn").innerText = "📋 Kopiuj e-mail";
+        document.getElementById("backLink").innerText = "← Powrót do strony głównej";
+      } else {
+        document.title = "Contact – Ignacy Tech";
+        document.getElementById("title").innerText = "Contact";
+        document.getElementById("subtitle").innerText = "Business & collaboration";
+        document.getElementById("copyBtn").innerText = "📋 Copy email";
+        document.getElementById("backLink").innerText = "← Back to homepage";
+      }
+    }
+
     function copyEmail() {
       const email = "kanal.jozwinski@gmail.com";
       navigator.clipboard.writeText(email);
-      alert("Email copied to clipboard!");
+      alert(lang === "pl"
+        ? "E-mail skopiowany do schowka!"
+        : "Email copied to clipboard!");
     }
   </script>
 
