@@ -1,163 +1,202 @@
-# Ignacy Tech – Landing Page
+🚀 Ignacy Tech – Official Website
 
-A simple, modern **HTML landing page** for the *Ignacy Tech* technology channel. The page includes links to YouTube, Discord, and Instagram, styled with a dark tech-themed design.
+Official landing page for the Ignacy Tech YouTube technology channel.
+The project is hosted using GitHub Pages and designed as a simple, modern, and easily customizable website.
 
----
+🌐 Live website:
+https://ignacytech.github.io
 
-## ✨ Features
+✨ Features
+🌙 Dark / Light Mode
 
-* Dark, modern UI inspired by tech platforms
-* Responsive layout (mobile-friendly)
-* Call-to-action buttons:
+Dark mode is enabled by default.
+The toggle button is located in the top-left corner.
 
-  * YouTube subscription
-  * Discord community
-  * Instagram profile
-* Instagram-style gradient button
-* Clean and simple HTML + CSS (no frameworks)
+Behavior:
 
----
+Dark mode: white background button with black text and 🌑 icon
 
-## 📁 Project Structure
+Light mode: black background button with white text and ☀️ icon
 
-```
-project-folder/
-│
-├── index.html              # Main HTML file
-├── channels4_profile.jpg   # Profile / logo image (you can rename it)
-├── README.md               # Project documentation
-```
+All colors are controlled using CSS variables.
 
----
+🌍 Language Switch (PL / EN)
 
-## 🖼️ Change Profile Image (Logo)
+The language switch button is located in the top-right corner.
+Default language is Polish.
 
-1. Replace the image file with your own profile/logo image
-2. Rename the image file to match **your file name and extension** (for example: `logo.png`, `profile.jpg`, etc.)
-3. Update the `src` attribute in `index.html`:
+The switch updates:
 
-```html
-<img src="yourfilename.extension" alt="Logo Ignacy Tech" class="logo">
-```
+Page title
 
-Make sure the image file is located in the **same folder** as `index.html`.
+Description text under the logo
 
----
+Button labels
 
-## 🌐 Live Website
+Footer text
 
-The website is available at:
+Button styling:
 
-**[https://ignacytech.github.io](https://ignacytech.github.io)**
+Dark mode: white background with black text
 
----
+Light mode: black background with white text
 
-## 🚀 How to Use
+🔗 Social Media Buttons
 
-1. Download or clone the project
-2. Make sure the image file `channels4_profile.jpg` is in the same folder as `index.html`
-3. Open `index.html` in any modern web browser
+The website includes buttons for:
 
----
+YouTube (red – official YouTube color)
 
-## 🔧 Customization
+Discord (blue – official Discord color)
 
-### Change Social Media Links
+Instagram (gradient style)
 
-You can change the links to your own platforms by editing these lines in `index.html`:
+All buttons include hover animations.
 
-**YouTube channel**
+🐙 GitHub Repository Button
 
-```html
-<a class="button" href="https://www.youtube.com/...">
-```
+The GitHub repository button is located in the bottom-left corner.
 
-**Discord server**
+Button text:
 
-```html
-<a class="button" href="https://discord.gg/...">
-```
+Polish: Repozytorium GitHub
 
-**Instagram profile**
+English: GitHub Repository
 
-```html
-<a class="button instagram" href="https://www.instagram.com/yourusername/">
-```
+Button styling:
 
----
+Dark mode: white button with black text
 
-### Change Page Title (Browser Tab)
+Light mode: black button with white text
 
-Edit the `<title>` tag in the `<head>` section:
+The button links directly to the project repository.
 
-```html
-<title>Ignacy Tech - Technology Channel</title>
-```
+🖼️ Channel Logo
 
----
+The channel logo is displayed at the top of the page.
 
-### Change Text Under the Logo (Channel Description)
+Default file used:
+channels4_profile.jpg
 
-Edit the paragraph directly under the logo and channel name:
+The image file must be located in the same directory as index.html.
 
-```html
-<p>Witaj na oficjalnej stronie kanału YouTube o technologii!</p>
-```
+🧭 Footer
 
-This text appears **under the logo and channel name** on the page. You can change it to describe your channel, brand, or content style.
+The footer displays:
+© 2026 Ignacy Tech
 
----
+It also contains a clickable Privacy Policy link.
+The privacy policy is stored in a separate file named privacy.html.
 
-### Change Text or Branding
+🔐 Privacy Policy
 
-* Page title: `<title>` tag
-* Channel name: `<h1>`
-* Description text: `<p>`
-* Footer text:
+The privacy policy:
 
-```html
-<footer>
-  © 2026 Ignacy Tech
-</footer>
-```
+Is implemented as a separate HTML file
 
----
+Is accessible from the footer
 
-## 🎨 Styling
+Supports both Polish and English
 
-All styles are included directly in the `<style>` section of the HTML file.
+Does not use a cookie consent popup (EU-style informational notice)
 
-You can easily modify:
+⭐ Favicon
 
-* Colors
-* Fonts
-* Button animations
-* Layout spacing
+The website supports a favicon.
 
-No external libraries or dependencies are required.
+Required file:
+favicon.ico
 
----
+The file must be placed in the root directory of the project.
+The favicon can be generated from the channel logo using an online favicon generator.
 
-## 🌐 Deployment
+📂 Project Structure
 
-You can host this page for free using:
+ignacytech.github.io/
+├── index.html
+├── privacy.html
+├── channels4_profile.jpg
+├── favicon.ico
+├── README.md
+└── LICENSE
 
-* GitHub Pages
-* Netlify
-* Vercel
-* Any shared hosting with HTML support
+⚙️ Customization Guide
+1️⃣ Change Channel Name
 
-Simply upload `index.html` and the image file.
+Edit the main heading in index.html:
 
----
+<h1>Ignacy Tech</h1>
 
-## 📜 License
+Replace Ignacy Tech with your own channel or brand name.
 
-This project is free to use and modify for personal or educational purposes.
+2️⃣ Change Text Under the Logo
 
----
+Edit the description paragraph:
 
-## 👤 Author
+<p id="desc">Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!</p>
+3️⃣ Change Social Media Links
 
-**Ignacy Tech**
-2026
+Update the URLs in the <a> tags in index.html:
+
+YouTube
+
+Discord
+
+Instagram
+
+GitHub Repository
+
+4️⃣ Change Profile Image (Logo)
+
+Replace the image file with your own logo or profile picture.
+Rename the image file to your own filename including the extension (for example: logo.png, profile.jpg).
+
+Update the image source:
+<img src="yourfilename.extension" class="logo">
+
+The image file must be located in the same folder as index.html.
+
+5️⃣ Change Page Title (Browser Tab)
+
+Edit the <title> tag in the <head> section:
+
+<title>Your Channel Name - Technology Channel</title>
+
+This title is displayed in the browser tab and search results.
+
+6️⃣ Styling
+
+All styling is defined directly inside the <style> section of index.html.
+
+You can customize:
+
+Background colors
+
+Text colors
+
+Button colors
+
+Font sizes
+
+Hover effects and animations
+
+No CSS framework is required.
+
+📄 License
+
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute the project.
+
+🛠️ Technologies Used
+
+HTML5
+CSS3 (CSS Variables)
+Vanilla JavaScript
+GitHub Pages
+
+📌 Project Status
+
+Active
+Maintained
+Beginner-friendly
+Fully customizable
