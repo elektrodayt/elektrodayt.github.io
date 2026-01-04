@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ignacy Tech - Kanał Technologiczny</title>
+
   <style>
     body {
       background-color: #0d1117;
@@ -12,6 +13,7 @@
       text-align: center;
       padding: 40px;
     }
+
     img.logo {
       width: 150px;
       height: auto;
@@ -19,15 +21,18 @@
       margin-bottom: 20px;
       box-shadow: 0 0 15px #58a6ff;
     }
+
     h1 {
       font-size: 3em;
       color: #58a6ff;
     }
+
     p {
       font-size: 1.2em;
       margin-bottom: 30px;
     }
-    a.button {
+
+    a.button, button.lang-btn {
       display: inline-block;
       padding: 15px 25px;
       margin: 10px;
@@ -36,15 +41,20 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 10px;
+      border: none;
+      cursor: pointer;
       transition: transform 0.2s ease, opacity 0.3s ease;
     }
-    a.button:hover {
+
+    a.button:hover, button.lang-btn:hover {
       transform: scale(1.05);
       opacity: 0.9;
     }
+
     a.instagram {
       background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
     }
+
     footer {
       margin-top: 40px;
       font-size: 0.9em;
@@ -54,32 +64,69 @@
 </head>
 <body>
 
-  <img src="channels4_profile.jpg" alt="Logo Elektroda" class="logo">
+  <!-- Language button -->
+  <button class="lang-btn" onclick="toggleLanguage()">🌍 PL</button>
 
-  <h1>Elektroda</h1>
-  <p>Witaj na oficjalnej stronie kanału YouTube o technologii!</p>
+  <img src="channels4_profile.jpg" alt="Logo Ignacy Tech" class="logo">
 
-  <a class="button" 
-     href="https://www.youtube.com/channel/UCBPIpGz2inVNYAAFuCQIDPQ" 
+  <h1 id="title">Ignacy Tech</h1>
+  <p id="description">Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!</p>
+
+  <a id="ytBtn" class="button"
+     href="https://www.youtube.com/channel/UCBPIpGz2inVNYAAFuCQIDPQ"
      target="_blank">
     📺 Subskrybuj na YouTube
   </a>
 
-  <a class="button" 
-     href="https://discord.gg/CMeZxnKD3a" 
+  <a id="dcBtn" class="button"
+     href="https://discord.gg/CMeZxnKD3a"
      target="_blank">
     💬 Dołącz na Discord
   </a>
 
-  <a class="button instagram" 
-     href="https://www.instagram.com/ignacy_tech/" 
+  <a id="igBtn" class="button instagram"
+     href="https://www.instagram.com/ignacy_tech/"
      target="_blank">
     📸 Obserwuj na Instagramie
   </a>
 
-  <footer>
+  <footer id="footer">
     © 2026 Ignacy Tech
   </footer>
+
+  <script>
+    let currentLang = "pl";
+
+    function toggleLanguage() {
+      if (currentLang === "pl") {
+        document.documentElement.lang = "en";
+        document.title = "Ignacy Tech - Technology Channel";
+        document.getElementById("description").innerText =
+          "Welcome to the official website of the Ignacy Tech YouTube channel!";
+        document.getElementById("ytBtn").innerText =
+          "📺 Subscribe on YouTube";
+        document.getElementById("dcBtn").innerText =
+          "💬 Join Discord";
+        document.getElementById("igBtn").innerText =
+          "📸 Follow on Instagram";
+        document.querySelector(".lang-btn").innerText = "🌍 EN";
+        currentLang = "en";
+      } else {
+        document.documentElement.lang = "pl";
+        document.title = "Ignacy Tech - Kanał Technologiczny";
+        document.getElementById("description").innerText =
+          "Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!";
+        document.getElementById("ytBtn").innerText =
+          "📺 Subskrybuj na YouTube";
+        document.getElementById("dcBtn").innerText =
+          "💬 Dołącz na Discord";
+        document.getElementById("igBtn").innerText =
+          "📸 Obserwuj na Instagramie";
+        document.querySelector(".lang-btn").innerText = "🌍 PL";
+        currentLang = "pl";
+      }
+    }
+  </script>
 
 </body>
 </html>
