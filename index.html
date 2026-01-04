@@ -3,62 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
   <title>Ignacy Tech - Kanał Technologiczny</title>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <style>
     :root {
-      --bg: #000;
-      --text: #fff;
-
-      --github-bg: #fff;
-      --github-text: #000;
-
-      --theme-btn-bg: #fff;
-      --theme-btn-text: #000;
-
-      --lang-btn-bg: #fff;
-      --lang-btn-text: #000;
+      --bg: #000000;
+      --text: #c9d1d9;
+      --card: #0d1117;
+      --accent: #58a6ff;
+      --btn-bg: white;
+      --btn-text: black;
     }
 
     body.light {
-      --bg: #fff;
-      --text: #000;
-
-      --github-bg: #000;
-      --github-text: #fff;
-
-      --theme-btn-bg: #000;
-      --theme-btn-text: #fff;
-
-      --lang-btn-bg: #000;
-      --lang-btn-text: #fff;
+      --bg: #ffffff;
+      --text: #111111;
+      --card: #f3f3f3;
+      --btn-bg: black;
+      --btn-text: white;
     }
 
     body {
       margin: 0;
       padding: 40px;
-      font-family: 'Segoe UI', sans-serif;
       background-color: var(--bg);
       color: var(--text);
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .logo {
+    /* Top buttons */
+    .top-left, .top-right {
+      position: fixed;
+      top: 20px;
+      z-index: 1000;
+    }
+
+    .top-left { left: 20px; }
+    .top-right { right: 20px; }
+
+    .top-btn {
+      padding: 10px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+    }
+
+    img.logo {
       width: 150px;
       border-radius: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 0 15px #58a6ff;
+      box-shadow: 0 0 15px var(--accent);
     }
 
     h1 {
-      color: #58a6ff;
       font-size: 3em;
-      margin-bottom: 10px;
+      color: var(--accent);
     }
 
     p {
@@ -66,164 +72,139 @@
       margin-bottom: 30px;
     }
 
-    a.button {
+    .buttons a {
       display: inline-block;
       padding: 15px 25px;
       margin: 10px;
-      color: #fff;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 10px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      color: white;
+      transition: transform 0.2s ease, opacity 0.3s ease;
     }
 
-    a.button:hover {
+    .buttons a:hover {
       transform: scale(1.05);
       opacity: 0.9;
     }
 
-    .yt { background-color: #ff0000; }
-    .dc { background-color: #5865F2; }
+    .yt { background: #ff0000; }
+    .dc { background: #5865F2; }
     .ig {
-      background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
     }
 
     /* GitHub button */
-    .github-btn {
+    .github {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background-color: var(--github-bg);
-      color: var(--github-text);
       padding: 12px 18px;
-      border-radius: 10px;
+      border-radius: 20px;
       font-weight: bold;
       text-decoration: none;
-      transition: transform 0.2s;
+      background: var(--btn-bg);
+      color: var(--btn-text);
     }
 
-    .github-btn:hover {
-      transform: scale(1.05);
+    /* Contact button */
+    .contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      background: var(--btn-bg);
+      color: var(--btn-text);
     }
 
     footer {
       margin-top: 60px;
-      color: #8b949e;
       font-size: 0.9em;
+      color: #8b949e;
     }
 
     footer a {
-      color: #58a6ff;
-      text-decoration: none;
-    }
-
-    /* Top buttons */
-    .lang-btn,
-    .theme-btn {
-      position: fixed;
-      top: 20px;
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .theme-btn {
-      left: 20px;
-      background-color: var(--theme-btn-bg);
-      color: var(--theme-btn-text);
-    }
-
-    .lang-btn {
-      right: 20px;
-      background-color: var(--lang-btn-bg);
-      color: var(--lang-btn-text);
+      color: inherit;
     }
   </style>
 </head>
 
-<body>
+<body class="dark">
 
-<!-- Controls -->
-<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌑</button>
-<button class="lang-btn" onclick="toggleLang()" id="langBtn">PL</button>
+  <!-- Theme toggle -->
+  <div class="top-left">
+    <button class="top-btn" onclick="toggleTheme()">🌑</button>
+  </div>
 
-<!-- GitHub -->
-<a id="githubBtn"
-   class="github-btn"
-   href="https://github.com/ignacytech/ignacytech.github.io"
-   target="_blank">
-  Repozytorium GitHub
-</a>
+  <!-- Language toggle -->
+  <div class="top-right">
+    <button class="top-btn" onclick="toggleLang()">PL</button>
+  </div>
 
-<!-- Content -->
-<img src="channels4_profile.jpg" alt="Ignacy Tech Logo" class="logo">
+  <img src="channels4_profile.jpg" alt="Ignacy Tech Logo" class="logo">
 
-<h1>Ignacy Tech</h1>
-<p id="desc">Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!</p>
+  <h1>Ignacy Tech</h1>
+  <p id="desc">Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!</p>
 
-<a id="ytBtn" class="button yt" href="https://www.youtube.com/" target="_blank">
-  📺 Subskrybuj na YouTube
-</a>
+  <div class="buttons">
+    <a class="yt" id="yt" href="https://www.youtube.com/channel/UCBPIpGz2inVNYAAFuCQIDPQ" target="_blank">
+      📺 Subskrybuj na YouTube
+    </a>
 
-<a id="dcBtn" class="button dc" href="https://discord.gg/" target="_blank">
-  💬 Dołącz na Discord
-</a>
+    <a class="dc" id="dc" href="https://discord.gg/CMeZxnKD3a" target="_blank">
+      💬 Dołącz na Discord
+    </a>
 
-<a id="igBtn" class="button ig" href="https://www.instagram.com/" target="_blank">
-  📸 Obserwuj na Instagramie
-</a>
+    <a class="ig" id="ig" href="https://www.instagram.com/ignacy_tech/" target="_blank">
+      📸 Obserwuj na Instagramie
+    </a>
+  </div>
 
-<footer>
-  © 2026 Ignacy Tech •
-  <a href="privacy.html" id="privacyLink">Polityka prywatności</a>
-</footer>
+  <a class="github" id="gh" href="https://github.com/ignacytech/ignacytech.github.io" target="_blank">
+    Repozytorium GitHub
+  </a>
 
-<script>
-  let lang = "pl";
-  let theme = "dark";
+  <a class="contact" href="contact.html">✉️ Kontakt</a>
 
-  function toggleLang() {
-    lang = lang === "pl" ? "en" : "pl";
-    updateLang();
-  }
+  <footer>
+    © 2026 Ignacy Tech • <a href="privacy.html">Privacy Policy</a>
+  </footer>
 
-  function toggleTheme() {
-    theme = theme === "dark" ? "light" : "dark";
-    document.body.classList.toggle("light");
-    themeBtn.innerText = theme === "dark" ? "🌑" : "☀️";
-  }
+  <script>
+    let lang = "pl";
+    let dark = true;
 
-  function updateLang() {
-    if (lang === "pl") {
-      document.documentElement.lang = "pl";
-      document.title = "Ignacy Tech - Kanał Technologiczny";
-      langBtn.innerText = "PL";
-      desc.innerText =
-        "Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!";
-      ytBtn.innerText = "📺 Subskrybuj na YouTube";
-      dcBtn.innerText = "💬 Dołącz na Discord";
-      igBtn.innerText = "📸 Obserwuj na Instagramie";
-      githubBtn.innerText = "Repozytorium GitHub";
-      privacyLink.innerText = "Polityka prywatności";
-    } else {
-      document.documentElement.lang = "en";
-      document.title = "Ignacy Tech - Technology Channel";
-      langBtn.innerText = "EN";
-      desc.innerText =
-        "Welcome to the official Ignacy Tech YouTube channel website!";
-      ytBtn.innerText = "📺 Subscribe on YouTube";
-      dcBtn.innerText = "💬 Join Discord";
-      igBtn.innerText = "📸 Follow on Instagram";
-      githubBtn.innerText = "GitHub Repository";
-      privacyLink.innerText = "Privacy Policy";
+    function toggleLang() {
+      lang = lang === "pl" ? "en" : "pl";
+      document.querySelector(".top-right button").innerText = lang.toUpperCase();
+
+      document.getElementById("desc").innerText =
+        lang === "pl"
+          ? "Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!"
+          : "Welcome to the official Ignacy Tech YouTube channel website!";
+
+      document.getElementById("yt").innerText =
+        lang === "pl" ? "📺 Subskrybuj na YouTube" : "📺 Subscribe on YouTube";
+
+      document.getElementById("dc").innerText =
+        lang === "pl" ? "💬 Dołącz na Discord" : "💬 Join Discord";
+
+      document.getElementById("ig").innerText =
+        lang === "pl" ? "📸 Obserwuj na Instagramie" : "📸 Follow on Instagram";
+
+      document.getElementById("gh").innerText =
+        lang === "pl" ? "Repozytorium GitHub" : "GitHub Repository";
     }
-  }
 
-  updateLang();
-</script>
+    function toggleTheme() {
+      dark = !dark;
+      document.body.classList.toggle("light", !dark);
+      document.querySelector(".top-left button").innerText = dark ? "🌑" : "☀️";
+    }
+  </script>
 
 </body>
 </html>
