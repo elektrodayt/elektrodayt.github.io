@@ -1,3 +1,11 @@
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Status](https://img.shields.io/badge/status-active-success)](#)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-active-brightgreen)](https://ignacytech.github.io)
+[![Website](https://img.shields.io/badge/Website-Live-blue)](https://ignacytech.github.io)
+
+![HTML](https://img.shields.io/badge/HTML5-orange)
+![CSS](https://img.shields.io/badge/CSS3-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-yellow)
 🚀 Ignacy Tech – Official Website
 
 Official landing page for the Ignacy Tech YouTube technology channel.
