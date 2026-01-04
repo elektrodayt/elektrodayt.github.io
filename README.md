@@ -24,9 +24,23 @@ A simple, modern **HTML landing page** for the *Ignacy Tech* technology channel.
 project-folder/
 │
 ├── index.html              # Main HTML file
-├── channels4_profile.jpg   # Logo image (required)
-└── README.md               # Project documentation
+├── channels4_profile.jpg   # Profile / logo image (you can rename it)
+├── README.md               # Project documentation
 ```
+
+---
+
+## 🖼️ Change Profile Image (Logo)
+
+1. Replace the image file with your own profile/logo image
+2. Rename the image file to match **your file name and extension** (for example: `logo.png`, `profile.jpg`, etc.)
+3. Update the `src` attribute in `index.html`:
+
+```html
+<img src="yourfilename.extension" alt="Logo Ignacy Tech" class="logo">
+```
+
+Make sure the image file is located in the **same folder** as `index.html`.
 
 ---
 
