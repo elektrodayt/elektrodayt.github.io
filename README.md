@@ -82,15 +82,15 @@ Edit the `<title>` tag in the `<head>` section:
 
 ---
 
-### Change Text Under the Logo
+### Change Text Under the Logo (Channel Description)
 
-Edit the paragraph below the logo:
+Edit the paragraph directly under the logo and channel name:
 
 ```html
-<p>Welcome to the official website of the technology YouTube channel!</p>
+<p>Witaj na oficjalnej stronie kanału YouTube o technologii!</p>
 ```
 
-You can replace this text with any description you like.
+This text appears **under the logo and channel name** on the page. You can change it to describe your channel, brand, or content style.
 
 ---
 
