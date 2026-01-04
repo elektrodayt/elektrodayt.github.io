@@ -50,7 +50,6 @@
       cursor: pointer;
     }
 
-    /* Privacy Notice */
     .privacy-notice {
       position: fixed;
       bottom: 20px;
@@ -69,13 +68,9 @@
 
     .privacy-notice.hidden { display: none; }
 
-    .privacy-notice h3 {
-      margin-top: 0;
-      color: #58a6ff;
-    }
+    .privacy-notice h3 { color: #58a6ff; margin-top: 0; }
 
     .privacy-notice button {
-      margin-right: 10px;
       margin-top: 10px;
       background: #238636;
       color: white;
@@ -86,19 +81,7 @@
       cursor: pointer;
     }
 
-    .details-btn {
-      background: #30363d;
-    }
-
-    .privacy-details {
-      display: none;
-      margin-top: 15px;
-      font-size: 0.9em;
-      line-height: 1.5;
-      color: #c9d1d9;
-      border-top: 1px solid #333;
-      padding-top: 10px;
-    }
+    .details-btn { background: #30363d; }
   </style>
 </head>
 
@@ -115,38 +98,23 @@
 
 <footer>
   © 2026 Ignacy Tech •
-  <a href="#privacy">Polityka prywatności</a>
+  <a href="privacy.html" id="privacyLink">Polityka prywatności</a>
 </footer>
 
 <!-- Privacy Notice -->
 <div class="privacy-notice" id="notice">
-  <h3 id="noticeTitle">Privacy Notice</h3>
-
+  <h3>Privacy Notice</h3>
   <p id="noticeText">
     Ta strona nie używa plików cookies. Wykorzystywany jest wyłącznie mechanizm
     localStorage w celach technicznych.
+    <br><br>
+    <a href="privacy.html">Zobacz Politykę prywatności</a>
   </p>
-
-  <button class="details-btn" onclick="toggleDetails()" id="detailsBtn">
-    Rozwiń
-  </button>
-
-  <button onclick="acceptNotice()" id="acceptBtn">
-    Rozumiem
-  </button>
-
-  <div class="privacy-details" id="details">
-    <p id="detailsText">
-      Strona Ignacy Tech nie zbiera danych osobowych, nie korzysta z narzędzi
-      analitycznych oraz nie używa cookies. localStorage służy wyłącznie do
-      zapamiętania informacji o wyświetleniu tego komunikatu.
-    </p>
-  </div>
+  <button onclick="acceptNotice()" id="acceptBtn">Rozumiem</button>
 </div>
 
 <script>
   let lang = "pl";
-  let detailsVisible = false;
   const notice = document.getElementById("notice");
 
   function toggleLang() {
@@ -160,46 +128,8 @@
       document.title = "Ignacy Tech - Kanał Technologiczny";
       langBtn.innerText = "PL";
       desc.innerText = "Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!";
-      noticeTitle.innerText = "Privacy Notice";
-      noticeText.innerText =
-        "Ta strona nie używa plików cookies. Wykorzystywany jest wyłącznie mechanizm localStorage w celach technicznych.";
-      detailsBtn.innerText = detailsVisible ? "Zwiń" : "Rozwiń";
       acceptBtn.innerText = "Rozumiem";
-      detailsText.innerText =
-        "Strona Ignacy Tech nie zbiera danych osobowych, nie korzysta z narzędzi analitycznych oraz nie używa cookies. localStorage służy wyłącznie do zapamiętania informacji o wyświetleniu tego komunikatu.";
-    } else {
-      document.documentElement.lang = "en";
-      document.title = "Ignacy Tech - Technology Channel";
-      langBtn.innerText = "EN";
-      desc.innerText = "Welcome to the official Ignacy Tech YouTube channel website!";
-      noticeTitle.innerText = "Privacy Notice";
-      noticeText.innerText =
-        "This website does not use cookies. Only localStorage is used for technical purposes.";
-      detailsBtn.innerText = detailsVisible ? "Hide details" : "Show details";
-      acceptBtn.innerText = "I understand";
-      detailsText.innerText =
-        "Ignacy Tech does not collect personal data, does not use analytics tools, and does not use cookies. localStorage is only used to remember that this notice was shown.";
-    }
-  }
-
-  function toggleDetails() {
-    detailsVisible = !detailsVisible;
-    document.getElementById("details").style.display =
-      detailsVisible ? "block" : "none";
-    updateLang();
-  }
-
-  function acceptNotice() {
-    localStorage.setItem("privacyNoticeSeen", "true");
-    notice.classList.add("hidden");
-  }
-
-  updateLang();
-
-  if (localStorage.getItem("privacyNoticeSeen")) {
-    notice.classList.add("hidden");
-  }
-</script>
-
-</body>
-</html>
+      privacyLink.innerText = "Polityka prywatności";
+      noticeText.innerHTML =
+        `Ta strona nie używa plików cookies. Wykorzystywany jest wyłącznie mechanizm
+        localStorage w celach technicznych.
