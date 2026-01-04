@@ -15,6 +15,8 @@
       --text: #fff;
       --github-bg: #fff;
       --github-text: #000;
+      --theme-btn-bg: #fff;
+      --theme-btn-text: #000;
     }
 
     body.light {
@@ -22,6 +24,8 @@
       --text: #000;
       --github-bg: #000;
       --github-text: #fff;
+      --theme-btn-bg: #000;
+      --theme-btn-text: #fff;
     }
 
     body {
@@ -60,6 +64,12 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 10px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    a.button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
     }
 
     .yt { background-color: #ff0000; }
@@ -97,25 +107,34 @@
       text-decoration: none;
     }
 
+    /* Top buttons */
     .lang-btn, .theme-btn {
       position: fixed;
       top: 20px;
       padding: 8px 12px;
       border-radius: 8px;
       border: none;
+      font-size: 18px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .lang-btn { right: 20px; }
-    .theme-btn { left: 20px; }
+    .lang-btn {
+      right: 20px;
+    }
+
+    .theme-btn {
+      left: 20px;
+      background-color: var(--theme-btn-bg);
+      color: var(--theme-btn-text);
+    }
   </style>
 </head>
 
 <body>
 
-<!-- Buttons -->
-<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+<!-- Controls -->
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌑</button>
 <button class="lang-btn" onclick="toggleLang()" id="langBtn">PL</button>
 
 <!-- GitHub -->
@@ -132,9 +151,17 @@
 <h1>Ignacy Tech</h1>
 <p id="desc">Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!</p>
 
-<a class="button yt" href="https://www.youtube.com/" target="_blank">YouTube</a>
-<a class="button dc" href="https://discord.gg/" target="_blank">Discord</a>
-<a class="button ig" href="https://www.instagram.com/" target="_blank">Instagram</a>
+<a id="ytBtn" class="button yt" href="https://www.youtube.com/" target="_blank">
+  📺 Subskrybuj na YouTube
+</a>
+
+<a id="dcBtn" class="button dc" href="https://discord.gg/" target="_blank">
+  💬 Dołącz na Discord
+</a>
+
+<a id="igBtn" class="button ig" href="https://www.instagram.com/" target="_blank">
+  📸 Obserwuj na Instagramie
+</a>
 
 <footer>
   © 2026 Ignacy Tech •
@@ -153,7 +180,7 @@
   function toggleTheme() {
     theme = theme === "dark" ? "light" : "dark";
     document.body.classList.toggle("light");
-    themeBtn.innerText = theme === "dark" ? "🌙" : "☀️";
+    themeBtn.innerText = theme === "dark" ? "🌑" : "☀️";
   }
 
   function updateLang() {
@@ -163,16 +190,22 @@
       langBtn.innerText = "PL";
       desc.innerText =
         "Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!";
-      privacyLink.innerText = "Polityka prywatności";
+      ytBtn.innerText = "📺 Subskrybuj na YouTube";
+      dcBtn.innerText = "💬 Dołącz na Discord";
+      igBtn.innerText = "📸 Obserwuj na Instagramie";
       githubBtn.innerText = "Repozytorium GitHub";
+      privacyLink.innerText = "Polityka prywatności";
     } else {
       document.documentElement.lang = "en";
       document.title = "Ignacy Tech - Technology Channel";
       langBtn.innerText = "EN";
       desc.innerText =
         "Welcome to the official Ignacy Tech YouTube channel website!";
-      privacyLink.innerText = "Privacy Policy";
+      ytBtn.innerText = "📺 Subscribe on YouTube";
+      dcBtn.innerText = "💬 Join Discord";
+      igBtn.innerText = "📸 Follow on Instagram";
       githubBtn.innerText = "GitHub Repository";
+      privacyLink.innerText = "Privacy Policy";
     }
   }
 
