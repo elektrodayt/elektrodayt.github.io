@@ -19,6 +19,7 @@
 
     a {
       color: #58a6ff;
+      text-decoration: none;
     }
 
     a.button {
@@ -52,65 +53,48 @@
       cursor: pointer;
     }
 
-    /* OVERLAY */
-    .overlay {
+    /* PRIVACY NOTICE */
+    .notice {
       position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .overlay.hidden { display: none; }
-
-    /* COOKIE POPUP */
-    .cookie-box {
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       background: #111;
-      padding: 30px;
+      color: #fff;
+      padding: 20px 24px;
       border-radius: 14px;
       max-width: 520px;
       width: 90%;
-      text-align: left;
-      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      z-index: 999;
     }
 
-    .cookie-box h2 {
+    .notice.hidden {
+      display: none;
+    }
+
+    .notice h3 {
       margin-top: 0;
       color: #58a6ff;
     }
 
-    .cookie-box p {
+    .notice p {
       font-size: 0.95em;
       line-height: 1.5;
+      margin-bottom: 15px;
     }
 
-    .cookie-actions {
-      margin-top: 20px;
-      text-align: right;
-    }
-
-    .cookie-actions button {
-      padding: 10px 16px;
-      margin-left: 10px;
-      border-radius: 8px;
+    .notice button {
+      background: #238636;
+      color: white;
       border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .agree {
-      background: #238636;
-      color: white;
-    }
-
-    .decline {
-      background: #555;
-      color: white;
-    }
-
-    /* PRIVACY POLICY */
+    /* PRIVACY POLICY SECTION */
     #privacy {
       margin-top: 80px;
       max-width: 800px;
@@ -149,68 +133,53 @@
     <div id="privacyContent"></div>
   </section>
 
-  <!-- COOKIE OVERLAY -->
-  <div id="cookieOverlay" class="overlay">
-    <div class="cookie-box">
-      <h2 id="cookieTitle">Zgoda na pliki cookies</h2>
-
-      <p id="cookieText">
-        Ta strona używa plików cookies w celach funkcjonalnych.
-        Aby korzystać ze strony, musisz wyrazić zgodę lub odmówić.
-        Zapoznaj się z
-        <a href="#privacy" id="privacyLink">Polityką prywatności</a>.
-      </p>
-
-      <div class="cookie-actions">
-        <button id="declineBtn" class="decline" onclick="declineCookies()">
-          Nie zgadzam się
-        </button>
-        <button id="agreeBtn" class="agree" onclick="acceptCookies()">
-          Zgadzam się
-        </button>
-      </div>
-    </div>
+  <!-- PRIVACY NOTICE -->
+  <div id="privacyNotice" class="notice">
+    <h3 id="noticeTitle">Privacy Notice</h3>
+    <p id="noticeText">
+      Ta strona nie używa plików cookies. Wykorzystywany jest wyłącznie mechanizm
+      localStorage w celach technicznych. Więcej informacji znajdziesz w
+      <a href="#privacy">Polityce prywatności</a>.
+    </p>
+    <button onclick="acceptNotice()" id="noticeBtn">Rozumiem</button>
   </div>
 
   <script>
     let lang = "pl";
 
-    const overlay = document.getElementById("cookieOverlay");
+    const notice = document.getElementById("privacyNotice");
 
     function updateLanguage() {
       if (lang === "pl") {
         document.documentElement.lang = "pl";
         document.title = "Ignacy Tech - Kanał Technologiczny";
+        document.getElementById("langBtn").innerText = "PL";
         document.getElementById("desc").innerText =
           "Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!";
-        document.getElementById("langBtn").innerText = "PL";
 
-        document.getElementById("cookieTitle").innerText =
-          "Zgoda na pliki cookies";
-        document.getElementById("cookieText").innerHTML =
-          `Ta strona używa plików cookies w celach funkcjonalnych.
-           Aby korzystać ze strony, musisz wyrazić zgodę lub odmówić.
-           Zapoznaj się z
-           <a href="#privacy" id="privacyLink">Polityką prywatności</a>.`;
-        document.getElementById("agreeBtn").innerText = "Zgadzam się";
-        document.getElementById("declineBtn").innerText = "Nie zgadzam się";
+        document.getElementById("noticeTitle").innerText =
+          "Privacy Notice";
+        document.getElementById("noticeText").innerHTML =
+          `Ta strona <strong>nie używa plików cookies</strong>.
+           Wykorzystywany jest wyłącznie mechanizm <strong>localStorage</strong>
+           w celach technicznych (zapamiętanie informacji).
+           Więcej informacji znajdziesz w
+           <a href="#privacy">Polityce prywatności</a>.`;
+        document.getElementById("noticeBtn").innerText = "Rozumiem";
 
         document.getElementById("privacyTitle").innerText =
           "Polityka prywatności";
         document.getElementById("privacyContent").innerText =
 `Strona Ignacy Tech szanuje prywatność użytkowników.
 
-Niniejsza strona nie zbiera danych osobowych, nie korzysta z narzędzi
-analitycznych oraz nie wykorzystuje plików cookies w celach marketingowych.
+Strona nie zbiera danych osobowych, nie korzysta z narzędzi analitycznych
+oraz nie używa plików cookies.
 
-Używane są wyłącznie pliki cookies o charakterze technicznym (funkcjonalnym),
-które służą do zapamiętania zgody użytkownika na korzystanie ze strony.
+Jedynym wykorzystywanym mechanizmem jest localStorage, który służy
+wyłącznie do zapamiętania informacji technicznych, takich jak
+wyświetlenie informacji o prywatności.
 
-Zgoda na cookies jest przechowywana lokalnie w przeglądarce użytkownika
-(localStorage) i nie jest przekazywana do żadnych podmiotów trzecich.
-
-Użytkownik może w każdej chwili usunąć zapisane dane w ustawieniach
-swojej przeglądarki.
+Dane te nie są przesyłane do żadnych podmiotów trzecich.
 
 Właścicielem strony jest Ignacy Tech.`;
 
@@ -220,19 +189,20 @@ Właścicielem strony jest Ignacy Tech.`;
       } else {
         document.documentElement.lang = "en";
         document.title = "Ignacy Tech - Technology Channel";
+        document.getElementById("langBtn").innerText = "EN";
         document.getElementById("desc").innerText =
           "Welcome to the official Ignacy Tech YouTube channel website!";
-        document.getElementById("langBtn").innerText = "EN";
 
-        document.getElementById("cookieTitle").innerText =
-          "Cookie Consent";
-        document.getElementById("cookieText").innerHTML =
-          `This website uses functional cookies.
-           To continue using the website, you must agree or decline.
-           Please read our
-           <a href="#privacy" id="privacyLink">Privacy Policy</a>.`;
-        document.getElementById("agreeBtn").innerText = "I Agree";
-        document.getElementById("declineBtn").innerText = "I Do Not Agree";
+        document.getElementById("noticeTitle").innerText =
+          "Privacy Notice";
+        document.getElementById("noticeText").innerHTML =
+          `This website <strong>does not use cookies</strong>.
+           Only the <strong>localStorage</strong> mechanism is used
+           for technical purposes.
+           More information is available in the
+           <a href="#privacy">Privacy Policy</a>.`;
+        document.getElementById("noticeBtn").innerText =
+          "I understand";
 
         document.getElementById("privacyTitle").innerText =
           "Privacy Policy";
@@ -240,15 +210,12 @@ Właścicielem strony jest Ignacy Tech.`;
 `Ignacy Tech respects the privacy of its users.
 
 This website does not collect personal data, does not use analytics tools,
-and does not use cookies for marketing purposes.
+and does not use cookies.
 
-Only technical (functional) cookies are used to store the user's consent
-for using the website.
+The only mechanism used is localStorage, which stores technical information
+such as whether the privacy notice has been displayed.
 
-The cookie consent is stored locally in the user's browser (localStorage)
-and is not shared with any third parties.
-
-Users may clear their browser storage at any time.
+This data is not shared with any third parties.
 
 The website is operated by Ignacy Tech.`;
 
@@ -257,16 +224,9 @@ The website is operated by Ignacy Tech.`;
       }
     }
 
-    function acceptCookies() {
-      localStorage.setItem("cookieConsent", "accepted");
-      overlay.classList.add("hidden");
-    }
-
-    function declineCookies() {
-      localStorage.setItem("cookieConsent", "declined");
-      alert(lang === "pl"
-        ? "Aby korzystać ze strony, musisz zaakceptować cookies."
-        : "You must accept cookies to use this website.");
+    function acceptNotice() {
+      localStorage.setItem("privacyNoticeSeen", "true");
+      notice.classList.add("hidden");
     }
 
     function toggleLanguage() {
@@ -276,8 +236,8 @@ The website is operated by Ignacy Tech.`;
 
     updateLanguage();
 
-    if (localStorage.getItem("cookieConsent") === "accepted") {
-      overlay.classList.add("hidden");
+    if (localStorage.getItem("privacyNoticeSeen")) {
+      notice.classList.add("hidden");
     }
   </script>
 
