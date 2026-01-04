@@ -6,17 +6,37 @@
   <title>Ignacy Tech - Kanał Technologiczny</title>
 
   <style>
+    :root {
+      --bg-color: #000000;
+      --text-color: #c9d1d9;
+    }
+
+    body.light {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+    }
+
     body {
-      background-color: #0d1117;
-      color: #c9d1d9;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
       padding: 40px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    /* Corners */
+    .top-left, .top-right, .bottom-left {
+      position: fixed;
+      z-index: 10;
+    }
+
+    .top-left { top: 20px; left: 20px; }
+    .top-right { top: 20px; right: 20px; }
+    .bottom-left { bottom: 20px; left: 20px; }
 
     img.logo {
       width: 150px;
-      height: auto;
       border-radius: 20px;
       margin-bottom: 20px;
       box-shadow: 0 0 15px #58a6ff;
@@ -32,11 +52,11 @@
       margin-bottom: 30px;
     }
 
-    a.button, button.lang-btn {
+    /* Base buttons */
+    a.button, button.control-btn {
       display: inline-block;
       padding: 15px 25px;
       margin: 10px;
-      background-color: #238636;
       color: white;
       text-decoration: none;
       font-weight: bold;
@@ -46,13 +66,40 @@
       transition: transform 0.2s ease, opacity 0.3s ease;
     }
 
-    a.button:hover, button.lang-btn:hover {
+    a.button:hover, button.control-btn:hover {
       transform: scale(1.05);
       opacity: 0.9;
     }
 
-    a.instagram {
+    /* Platform colors */
+    .youtube { background-color: #ff0000; }
+    .discord { background-color: #5865f2; }
+    .instagram {
       background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    }
+
+    /* Control buttons */
+    button.control-btn {
+      background-color: #444;
+    }
+
+    body.light button.control-btn {
+      background-color: #ddd;
+      color: #000;
+    }
+
+    /* GitHub button – 0.5 size */
+    .github {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 7px 12px;      /* połowa paddingu */
+      font-size: 0.8em;       /* mniejsza czcionka */
+      border-radius: 8px;
+    }
+
+    body.light .github {
+      background-color: #000000;
+      color: #ffffff;
     }
 
     footer {
@@ -64,21 +111,37 @@
 </head>
 <body>
 
-  <!-- Language button -->
-  <button class="lang-btn" onclick="toggleLanguage()">🌍 PL</button>
+  <!-- Theme -->
+  <div class="top-left">
+    <button class="control-btn" onclick="toggleTheme()">🌙 Dark</button>
+  </div>
+
+  <!-- Language -->
+  <div class="top-right">
+    <button class="control-btn" onclick="toggleLanguage()">🌍 PL</button>
+  </div>
+
+  <!-- GitHub -->
+  <div class="bottom-left">
+    <a id="ghBtn" class="button github"
+       href="https://github.com/ignacytech/ignacytech.github.io"
+       target="_blank">
+      Repozytorium GitHub
+    </a>
+  </div>
 
   <img src="channels4_profile.jpg" alt="Logo Ignacy Tech" class="logo">
 
-  <h1 id="title">Ignacy Tech</h1>
+  <h1>Ignacy Tech</h1>
   <p id="description">Witaj na oficjalnej stronie kanału YouTube Ignacy Tech!</p>
 
-  <a id="ytBtn" class="button"
+  <a id="ytBtn" class="button youtube"
      href="https://www.youtube.com/channel/UCBPIpGz2inVNYAAFuCQIDPQ"
      target="_blank">
     📺 Subskrybuj na YouTube
   </a>
 
-  <a id="dcBtn" class="button"
+  <a id="dcBtn" class="button discord"
      href="https://discord.gg/CMeZxnKD3a"
      target="_blank">
     💬 Dołącz na Discord
@@ -90,12 +153,13 @@
     📸 Obserwuj na Instagramie
   </a>
 
-  <footer id="footer">
+  <footer>
     © 2026 Ignacy Tech
   </footer>
 
   <script>
     let currentLang = "pl";
+    let darkMode = true;
 
     function toggleLanguage() {
       if (currentLang === "pl") {
@@ -109,7 +173,9 @@
           "💬 Join Discord";
         document.getElementById("igBtn").innerText =
           "📸 Follow on Instagram";
-        document.querySelector(".lang-btn").innerText = "🌍 EN";
+        document.getElementById("ghBtn").innerText =
+          "GitHub Repository";
+        document.querySelector(".top-right button").innerText = "🌍 EN";
         currentLang = "en";
       } else {
         document.documentElement.lang = "pl";
@@ -122,9 +188,18 @@
           "💬 Dołącz na Discord";
         document.getElementById("igBtn").innerText =
           "📸 Obserwuj na Instagramie";
-        document.querySelector(".lang-btn").innerText = "🌍 PL";
+        document.getElementById("ghBtn").innerText =
+          "Repozytorium GitHub";
+        document.querySelector(".top-right button").innerText = "🌍 PL";
         currentLang = "pl";
       }
+    }
+
+    function toggleTheme() {
+      darkMode = !darkMode;
+      document.body.classList.toggle("light");
+      document.querySelector(".top-left button").innerText =
+        darkMode ? "🌙 Dark" : "☀️ Light";
     }
   </script>
 
